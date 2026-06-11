@@ -129,12 +129,15 @@ def execute(filters=None):
 				currency,
 				company_currency,
 			)
-			if basic_salary_amt > 0:
-				e3_defined_contribution_retirement_scheme_amt = (
-					get_p9a_tax_deduction_card_fixed_component_amt(p9a_tax_deduction_card_type[6])
-				)
-			else:
-				e3_defined_contribution_retirement_scheme_amt = 0
+			e3_defined_contribution_retirement_scheme_amt = get_p9a_tax_deduction_card_amt(
+				filters,
+				emp.name,
+				month_start_date,
+				month_end_date,
+				p9a_tax_deduction_card_type[6],
+				currency,
+				company_currency,
+			)
 			lowest_of_column_e = min(
 				e1_defined_contribution_retirement_scheme_amt,
 				e2_defined_contribution_retirement_scheme_amt,
